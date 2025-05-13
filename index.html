@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediCare Hospital - Professional Healthcare Services</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#0284c7", secondary: "#0ea5e9" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      }
+      .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      .custom-checkbox {
+      position: relative;
+      cursor: pointer;
+      }
+      .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      }
+      .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 4px;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+      background-color: #0284c7;
+      border-color: #0284c7;
+      }
+      .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+      display: block;
+      }
+      .custom-checkbox .checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+      .custom-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      }
+      .custom-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e2e8f0;
+      transition: .4s;
+      border-radius: 24px;
+      }
+      .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .switch-slider {
+      background-color: #0284c7;
+      }
+      input:checked + .switch-slider:before {
+      transform: translateX(20px);
+      }
+      .custom-radio {
+      position: relative;
+      cursor: pointer;
+      }
+      .custom-radio input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      }
+      .radio-mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 50%;
+      }
+      .custom-radio input:checked ~ .radio-mark {
+      background-color: #fff;
+      border-color: #0284c7;
+      }
+      .radio-mark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      }
+      .custom-radio input:checked ~ .radio-mark:after {
+      display: block;
+      }
+      .custom-radio .radio-mark:after {
+      top: 3px;
+      left: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0284c7;
+      }
+      .custom-range {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      outline: none;
+      }
+      .custom-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0284c7;
+      cursor: pointer;
+      }
+      .custom-range::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0284c7;
+      cursor: pointer;
+      border: none;
+      }
+      .custom-select {
+      position: relative;
+      }
+      .custom-select select {
+      display: none;
+      }
+      .select-selected {
+      background-color: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      }
+      .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-color: #888 transparent transparent transparent;
+      }
+      .select-selected.select-arrow-active:after {
+      border-color: transparent transparent #888 transparent;
+      top: 40%;
+      }
+      .select-items {
+      position: absolute;
+      background-color: #fff;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      border: 1px solid #e2e8f0;
+      border-radius: 0 0 8px 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+      }
+      .select-items div {
+      padding: 10px 16px;
+      cursor: pointer;
+      }
+      .select-items div:hover {
+      background-color: #f3f4f6;
+      }
+      .select-hide {
+      display: none;
+      }
+      .same-as-selected {
+      background-color: #f3f4f6;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="sticky-header bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-3xl font-['Pacifico'] text-primary mr-10">logo</h1>
+            <nav class="hidden lg:flex space-x-8">
+              <a
+                href="/"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+                class="text-gray-800 hover:text-primary font-medium"
+                >Home</a
+              >
+              <a
+                href="#services"
+                class="text-gray-800 hover:text-primary font-medium"
+                >Services</a
+              >
+              <a
+                href="#doctors"
+                class="text-gray-800 hover:text-primary font-medium"
+                >Doctors</a
+              >
+              <a
+                href="#appointment"
+                class="text-gray-800 hover:text-primary font-medium"
+                >Appointments</a
+              >
+              <a
+                href="#about"
+                class="text-gray-800 hover:text-primary font-medium"
+                >About Us</a
+              >
+              <a
+                href="#contact"
+                class="text-gray-800 hover:text-primary font-medium"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="hidden md:flex items-center">
+              <div
+                class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-2"
+              >
+                <i class="ri-phone-line text-primary"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500">Emergency</p>
+                <p class="text-primary font-semibold">+1 (800) 123-4567</p>
+              </div>
+            </div>
+            <button
+              class="bg-primary text-white px-5 py-2.5 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+            >
+              Book Appointment
+            </button>
+            <button
+              class="lg:hidden w-10 h-10 flex items-center justify-center"
+              id="mobile-menu-button"
+            >
+              <i class="ri-menu-line text-2xl"></i>
+            </button>
+          </div>
+        </div>
+        <div class="lg:hidden hidden mt-4 pb-2" id="mobile-menu">
+          <nav class="flex flex-col space-y-3">
+            <a
+              href="/"
+              onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >Home</a
+            >
+            <a
+              href="#services"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >Services</a
+            >
+            <a
+              href="#doctors"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >Doctors</a
+            >
+            <a
+              href="#appointment"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >Appointments</a
+            >
+            <a
+              href="#about"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >About Us</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-800 hover:text-primary font-medium py-2"
+              >Contact</a
+            >
+          </nav>
+          <div class="flex items-center mt-4 md:hidden">
+            <div
+              class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-2"
+            >
+              <i class="ri-phone-line text-primary"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500">Emergency</p>
+              <p class="text-primary font-semibold">+1 (800) 123-4567</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Banner -->
+    <section
+      class="relative w-full bg-cover bg-center h-[600px]"
+      style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%20hospital%20interior%20with%20a%20spacious%20lobby%2C%20featuring%20a%20clean%2C%20well-lit%20reception%20area%20with%20medical%20professionals%20in%20white%20coats%20attending%20to%20patients.%20The%20scene%20shows%20a%20welcoming%20atmosphere%20with%20comfortable%20seating%2C%20indoor%20plants%2C%20and%20state-of-the-art%20medical%20equipment%20visible%20in%20the%20background.%20The%20left%20side%20of%20the%20image%20has%20a%20gradient%20fade%20to%20white%20to%20allow%20for%20text%20overlay%2C%20while%20the%20right%20side%20shows%20the%20detailed%20hospital%20environment.&width=1920&height=1080&seq=1&orientation=landscape');"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"
+      ></div>
+      <div
+        class="container mx-auto px-4 h-full flex items-center relative z-10"
+      >
+        <div class="max-w-xl">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Exceptional Healthcare for Your Family
+          </h1>
+          <p class="text-lg text-gray-700 mb-8">
+            We provide world-class medical services with a compassionate
+            approach, ensuring the best care for you and your loved ones.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+            >
+              Book Appointment
+            </button>
+            <button
+              class="bg-white text-primary border border-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-50 transition"
+            >
+              Emergency Services
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Key Services -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Our Medical Services
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We offer a comprehensive range of medical services to meet all your
+            healthcare needs, delivered by our team of experienced specialists.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-heart-pulse-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Cardiology</h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive care for heart conditions with advanced diagnostic
+              and treatment options, including ECG, echocardiography, and
+              cardiac rehabilitation.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-mental-health-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Neurology</h3>
+            <p class="text-gray-600 mb-4">
+              Expert diagnosis and treatment of disorders affecting the nervous
+              system, including the brain, spinal cord, and peripheral nerves.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-capsule-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              Orthopedics
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Specialized care for musculoskeletal issues, including joint
+              replacements, sports injuries, and rehabilitation services.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-microscope-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              Laboratory Services
+            </h3>
+            <p class="text-gray-600 mb-4">
+              State-of-the-art diagnostic testing with quick and accurate
+              results, including blood work, pathology, and specialized tests.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-psychotherapy-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Pediatrics</h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive healthcare for infants, children, and adolescents,
+              including preventive care, vaccinations, and treatment for
+              childhood illnesses.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6"
+            >
+              <i class="ri-surgical-mask-line text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              General Surgery
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Advanced surgical procedures using minimally invasive techniques
+              whenever possible, with a focus on faster recovery times.
+            </p>
+            <a
+              href="#"
+              class="text-primary font-medium inline-flex items-center hover:underline"
+            >
+              Learn More
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Doctor Profiles -->
+    <section id="doctors" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Meet Our Specialists
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Our team of highly qualified doctors are committed to providing
+            exceptional care with compassion and expertise.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20confident%20female%20doctor%20with%20a%20stethoscope%2C%20wearing%20a%20white%20coat%2C%20with%20a%20warm%20smile%20against%20a%20neutral%20background.%20The%20image%20should%20be%20well-lit%20with%20soft%20lighting%20to%20create%20a%20trustworthy%20and%20approachable%20appearance.%20The%20doctor%20appears%20to%20be%20in%20her%2040s%20with%20a%20professional%20demeanor.&width=400&height=500&seq=2&orientation=portrait"
+              alt="Dr. Emily Richardson"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-1">
+                Dr. Emily Richardson
+              </h3>
+              <p class="text-primary font-medium mb-3">Cardiology</p>
+              <p class="text-gray-600 text-sm mb-4">
+                MD, PhD, FACC with over 15 years of experience in interventional
+                cardiology and heart failure management.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2.5 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20male%20doctor%20in%20his%2050s%20with%20glasses%20and%20a%20white%20coat%2C%20with%20a%20stethoscope%20around%20his%20neck.%20He%20has%20a%20confident%20and%20experienced%20expression%20with%20a%20slight%20smile.%20The%20image%20has%20soft%2C%20professional%20lighting%20against%20a%20neutral%20background%20that%20conveys%20expertise%20and%20trustworthiness.&width=400&height=500&seq=3&orientation=portrait"
+              alt="Dr. Michael Chen"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-1">
+                Dr. Michael Chen
+              </h3>
+              <p class="text-primary font-medium mb-3">Neurology</p>
+              <p class="text-gray-600 text-sm mb-4">
+                Board-certified neurologist specializing in stroke prevention,
+                headache disorders, and neurodegenerative diseases.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2.5 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20female%20doctor%20in%20her%2030s%20with%20a%20white%20coat%20and%20stethoscope.%20She%20has%20a%20warm%2C%20approachable%20smile%20and%20appears%20confident%20and%20compassionate.%20The%20image%20has%20clean%2C%20professional%20lighting%20against%20a%20neutral%20background%20that%20creates%20a%20sense%20of%20trust%20and%20medical%20expertise.&width=400&height=500&seq=4&orientation=portrait"
+              alt="Dr. Sarah Johnson"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-1">
+                Dr. Sarah Johnson
+              </h3>
+              <p class="text-primary font-medium mb-3">Pediatrics</p>
+              <p class="text-gray-600 text-sm mb-4">
+                Dedicated pediatrician with special interest in childhood
+                development, preventive care, and adolescent medicine.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2.5 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20male%20doctor%20in%20his%2040s%20wearing%20a%20white%20coat%20with%20a%20stethoscope.%20He%20has%20a%20confident%2C%20reassuring%20expression%20with%20a%20professional%20demeanor.%20The%20image%20has%20clean%2C%20even%20lighting%20against%20a%20neutral%20background%20that%20conveys%20medical%20expertise%20and%20trustworthiness.&width=400&height=500&seq=5&orientation=portrait"
+              alt="Dr. James Wilson"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-1">
+                Dr. James Wilson
+              </h3>
+              <p class="text-primary font-medium mb-3">Orthopedics</p>
+              <p class="text-gray-600 text-sm mb-4">
+                Fellowship-trained orthopedic surgeon specializing in sports
+                medicine, joint replacement, and minimally invasive procedures.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2.5 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <button
+            class="bg-white text-primary border border-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-50 transition"
+          >
+            View All Doctors
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Appointment Booking -->
+    <section id="appointment" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="max-w-5xl mx-auto bg-white rounded-xl shadow-md overflow-hidden"
+        >
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 bg-primary p-10 text-white">
+              <h2 class="text-3xl font-bold mb-6">Book Your Appointment</h2>
+              <p class="mb-8">
+                Schedule a visit with our specialists. We're committed to
+                providing you with timely and personalized care.
+              </p>
+              <div class="mb-8">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4"
+                  >
+                    <i class="ri-time-line text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Working Hours</h3>
+                    <p class="text-sm">Monday - Friday: 8:00 AM - 8:00 PM</p>
+                    <p class="text-sm">Saturday: 9:00 AM - 5:00 PM</p>
+                  </div>
+                </div>
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4"
+                  >
+                    <i class="ri-phone-line text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Contact Us</h3>
+                    <p class="text-sm">+1 (800) 123-4567</p>
+                    <p class="text-sm">appointments@medicare.com</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full mr-4"
+                  >
+                    <i class="ri-map-pin-line text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Our Location</h3>
+                    <p class="text-sm">123 Medical Center Drive</p>
+                    <p class="text-sm">Boston, MA 02115</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 p-10">
+              <form>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="firstName"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      id="firstName"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="lastName"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      id="lastName"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="phone"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="department"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Department</label
+                    >
+                    <div class="custom-select">
+                      <div class="select-selected">Select Department</div>
+                      <div class="select-items select-hide">
+                        <div>Cardiology</div>
+                        <div>Neurology</div>
+                        <div>Orthopedics</div>
+                        <div>Pediatrics</div>
+                        <div>General Surgery</div>
+                        <div>Dermatology</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      for="doctor"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Doctor</label
+                    >
+                    <div class="custom-select">
+                      <div class="select-selected">Select Doctor</div>
+                      <div class="select-items select-hide">
+                        <div>Dr. Emily Richardson</div>
+                        <div>Dr. Michael Chen</div>
+                        <div>Dr. Sarah Johnson</div>
+                        <div>Dr. James Wilson</div>
+                        <div>Dr. Robert Thompson</div>
+                        <div>Dr. Jennifer Lee</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="date"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Preferred Date</label
+                    >
+                    <input
+                      type="date"
+                      id="date"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="time"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Preferred Time</label
+                    >
+                    <input
+                      type="time"
+                      id="time"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="reason"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Reason for Visit</label
+                  >
+                  <textarea
+                    id="reason"
+                    rows="3"
+                    class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                  ></textarea>
+                </div>
+                <div class="mb-6">
+                  <label class="custom-checkbox flex items-center">
+                    <input type="checkbox" required />
+                    <span class="checkmark"></span>
+                    <span class="ml-7 text-sm text-gray-700"
+                      >I agree to the
+                      <a href="#" class="text-primary hover:underline"
+                        >terms and conditions</a
+                      >
+                      and
+                      <a href="#" class="text-primary hover:underline"
+                        >privacy policy</a
+                      >.</span
+                    >
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+                >
+                  Schedule Appointment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Facility Highlights -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Our Hospital Facilities
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our state-of-the-art facilities designed to provide the
+            highest standard of care in a comfortable environment.
+          </p>
+        </div>
+        <div class="mb-16 relative">
+          <div class="overflow-hidden rounded-xl">
+            <img
+              src="https://readdy.ai/api/search-image?query=Modern%20hospital%20facility%20interior%20showing%20a%20spacious%2C%20well-lit%20lobby%20with%20comfortable%20seating%20areas%2C%20indoor%20plants%2C%20and%20a%20clean%2C%20professional%20environment.%20The%20image%20captures%20the%20advanced%20medical%20technology%20visible%20in%20the%20background%20while%20maintaining%20a%20warm%2C%20welcoming%20atmosphere%20with%20natural%20light%20coming%20through%20large%20windows.%20The%20design%20features%20contemporary%20architecture%20with%20a%20calming%20color%20palette.&width=1200&height=600&seq=6&orientation=landscape"
+              alt="Hospital Facility"
+              class="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div class="text-center">
+            <div
+              class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-4"
+            >
+              <i class="ri-hotel-bed-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-4xl font-bold text-gray-900 mb-2">350+</h3>
+            <p class="text-gray-600">Hospital Beds</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-4"
+            >
+              <i class="ri-user-heart-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-4xl font-bold text-gray-900 mb-2">25,000+</h3>
+            <p class="text-gray-600">Patients Treated Annually</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-4"
+            >
+              <i class="ri-user-star-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-4xl font-bold text-gray-900 mb-2">120+</h3>
+            <p class="text-gray-600">Qualified Doctors</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-4"
+            >
+              <i class="ri-calendar-check-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-4xl font-bold text-gray-900 mb-2">35</h3>
+            <p class="text-gray-600">Years of Excellence</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Modern%20hospital%20operating%20room%20with%20advanced%20surgical%20equipment%2C%20bright%20LED%20surgical%20lights%2C%20and%20state-of-the-art%20monitoring%20systems.%20The%20room%20is%20clean%2C%20sterile%2C%20and%20showcases%20the%20latest%20medical%20technology%20in%20a%20professional%20healthcare%20setting.&width=400&height=300&seq=7&orientation=landscape"
+              alt="Advanced Operating Rooms"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Advanced Operating Rooms
+              </h3>
+              <p class="text-gray-600">
+                Our surgical suites are equipped with the latest technology for
+                minimally invasive procedures and complex surgeries.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Modern%20hospital%20diagnostic%20imaging%20room%20with%20an%20MRI%20machine%20in%20a%20clean%2C%20well-lit%20environment.%20The%20room%20features%20advanced%20medical%20technology%20with%20comfortable%20patient%20accommodation%20and%20professional%20medical%20equipment%20arranged%20in%20a%20spacious%2C%20clinical%20setting.&width=400&height=300&seq=8&orientation=landscape"
+              alt="Diagnostic Imaging"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Diagnostic Imaging
+              </h3>
+              <p class="text-gray-600">
+                State-of-the-art imaging services including MRI, CT scans,
+                X-rays, and ultrasound for accurate diagnoses.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition"
+          >
+            <img
+              src="https://readdy.ai/api/search-image?query=Modern%20hospital%20patient%20room%20with%20a%20comfortable%20bed%2C%20large%20windows%20with%20natural%20light%2C%20medical%20monitoring%20equipment%2C%20and%20a%20clean%2C%20welcoming%20atmosphere.%20The%20room%20has%20a%20contemporary%20design%20with%20warm%20colors%2C%20visitor%20seating%2C%20and%20appears%20spacious%20and%20well-maintained.&width=400&height=300&seq=9&orientation=landscape"
+              alt="Patient Rooms"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Comfortable Patient Rooms
+              </h3>
+              <p class="text-gray-600">
+                Private and semi-private rooms designed for comfort and
+                recovery, with modern amenities and attentive care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h1 class="text-3xl font-['Pacifico'] text-white mb-6">logo</h1>
+            <p class="text-gray-400 mb-6">
+              Providing exceptional healthcare services with compassion and
+              expertise since 1990.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-twitter-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-instagram-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-linkedin-fill"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#doctors"
+                  class="text-gray-400 hover:text-white transition"
+                  >Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#appointment"
+                  class="text-gray-400 hover:text-white transition"
+                  >Appointments</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Our Services</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Cardiology</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Neurology</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Orthopedics</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Pediatrics</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Laboratory Services</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Emergency Care</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Contact Information</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full mr-3 mt-0.5"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >123 Medical Center Drive<br />Boston, MA 02115</span
+                >
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full mr-3"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">+1 (800) 123-4567</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full mr-3"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400">info@medicare.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-gray-800">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; 2025 MediCare Hospital. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Terms of Service</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition"
+                >Sitemap</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Custom select implementation
+        const customSelects = document.querySelectorAll(".custom-select");
+        for (let i = 0; i < customSelects.length; i++) {
+          const selectSelected = customSelects[i].querySelector(".select-selected");
+          const selectItems = customSelects[i].querySelector(".select-items");
+          const selectOptions = selectItems.querySelectorAll("div");
+          selectSelected.addEventListener("click", function (e) {
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextElementSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+          });
+          for (let j = 0; j < selectOptions.length; j++) {
+            selectOptions[j].addEventListener("click", function () {
+              const selectSelected = this.parentNode.previousElementSibling;
+              selectSelected.innerHTML = this.innerHTML;
+              selectSelected.classList.remove("select-arrow-active");
+              this.parentNode.classList.add("select-hide");
+              const sameAsSelected =
+                this.parentNode.querySelectorAll(".same-as-selected");
+              for (let k = 0; k < sameAsSelected.length; k++) {
+                sameAsSelected[k].classList.remove("same-as-selected");
+              }
+              this.classList.add("same-as-selected");
+            });
+          }
+        }
+        function closeAllSelect(elmnt) {
+          const selectItems = document.querySelectorAll(".select-items");
+          const selectSelected = document.querySelectorAll(".select-selected");
+          const arrNo = [];
+          for (let i = 0; i < selectSelected.length; i++) {
+            if (elmnt == selectSelected[i]) {
+              arrNo.push(i);
+            } else {
+              selectSelected[i].classList.remove("select-arrow-active");
+            }
+          }
+          for (let i = 0; i < selectItems.length; i++) {
+            if (arrNo.indexOf(i)) {
+              selectItems[i].classList.add("select-hide");
+            }
+          }
+        }
+        document.addEventListener("click", closeAllSelect);
+      });
+    </script>
+  </body>
+</html>
